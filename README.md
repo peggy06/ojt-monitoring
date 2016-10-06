@@ -1,2 +1,2 @@
-# Blog-App
-Blog-App Laravel5
+# ojt-monitoring
+capstone project

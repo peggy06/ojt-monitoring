@@ -1,0 +1,21 @@
+{
+    "name": "jcf/geocode",
+    "description": "A simple Laravel 4 service provider for Google Geocode API.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "João Carlos",
+            "email": "jotacfurtado@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "guzzlehttp/guzzle": "4.0.2"
+    },
+    "autoload": {
+        "psr-0": {
+            "Jcf\\Geocode": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}

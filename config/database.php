@@ -54,11 +54,11 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => 'localhost',
-            'port' => env('DB_PORT', '3306'),
-            'database' => "oms",
-            'username' => "root",
-            'password' => "",
+            'host' => 'sql6.freemysqlhosting.net',
+            'port' => '3306',
+            'database' => "sql6139126",
+            'username' => "sql6139126",
+            'password' => "AlKmPjjtjM",
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',

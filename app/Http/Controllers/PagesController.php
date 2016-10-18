@@ -61,7 +61,9 @@ class PagesController extends Controller
 //            }
 
             $this->geoIpController->locate($request->ip());
-            echo $this->geoIpController->city;
+            echo $this->geoIpController->ip;
+            echo $this->geoIpController->longitude;
+            echo $this->geoIpController->latitude;
             echo "nice city";
             return view('frontend.users.index');
         }

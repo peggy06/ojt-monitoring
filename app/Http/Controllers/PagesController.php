@@ -67,8 +67,9 @@ class PagesController extends Controller
 //                echo $response->locationType();
 //                echo $response->formattedAddress();
 //            }
-            $location = file_get_contents('http://freegeoip.net/json/'.$_SERVER['REMOTE_ADDR']);
+            $location = file_get_contents('http://freegeoip.net/json/'.$request->getClientIp());
             print_r($location);
+            echo $request->getClientIp();
         }
 
     }

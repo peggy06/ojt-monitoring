@@ -67,7 +67,7 @@ class PagesController extends Controller
 //                echo $response->locationType();
 //                echo $response->formattedAddress();
 //            }
-            echo file_get_contents('https://ipapi.co/'.$request->getClientIp().'/json/');
+            echo file_get_contents('https://ipapi.co/'.$request->getClientIp().'/country/');
             $location = file_get_contents('http://freegeoip.net/json/'.$request->getClientIp());
             print_r($location);
             echo $request->getClientIp();

@@ -46,7 +46,7 @@ class PagesController extends Controller
      * users (Adviser and Students) index page
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(){
+    public function index(Request $request){
         if(session()->has('userLogin')){
             if(auth()->user()->role == 2){
                 return redirect()->route('adviserDashboard');
@@ -60,7 +60,7 @@ class PagesController extends Controller
 //                echo $response->formattedAddress();
 //            }
 
-            $this->geoIpController->locate();
+            $this->geoIpController->locate($request->ip());
             echo $this->geoIpController->city;
             return view('frontend.users.index');
         }

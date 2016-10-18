@@ -54,18 +54,19 @@ class PagesController extends Controller
 //                return redirect()->route('studentDashboard');
             }
         }else{
-//            $response = Geocode::make()->address('Starmall San Jose Del Monte, BUlacan');
-//            if ($response){
-//                echo $response->locationType();
-//                echo $response->formattedAddress();
-//            }
 
-            $this->geoIpController->locate($request->ip());
-            echo $this->geoIpController->ip;
-            echo $this->geoIpController->longitude;
-            echo $this->geoIpController->latitude;
+            $this->geoIpController->locate($request->getClientIp());
+            echo $this->geoIpController->ip."<br>";
+            echo $this->geoIpController->longitude."<br>";
+            echo $this->geoIpController->latitude."<br>";
             echo "nice city";
-            return view('frontend.users.index');
+//            return view('frontend.users.index');
+
+            $response = Geocode::make()->latLng($this->geoIpController->latitude, $this->geoIpController->longitude);
+            if ($response){
+                echo $response->locationType();
+                echo $response->formattedAddress();
+            }
         }
 
     }

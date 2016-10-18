@@ -55,18 +55,20 @@ class PagesController extends Controller
             }
         }else{
 
-            $this->geoIpController->locate($request->getClientIp());
-            echo $this->geoIpController->ip."<br>";
-            echo $this->geoIpController->longitude."<br>";
-            echo $this->geoIpController->latitude."<br>";
-            echo "nice city";
-//            return view('frontend.users.index');
-
-            $response = Geocode::make()->latLng($this->geoIpController->latitude, $this->geoIpController->longitude);
-            if ($response){
-                echo $response->locationType();
-                echo $response->formattedAddress();
-            }
+//            $this->geoIpController->locate($request->getClientIp());
+//            echo $this->geoIpController->ip."<br>";
+//            echo $this->geoIpController->longitude."<br>";
+//            echo $this->geoIpController->latitude."<br>";
+//            echo "nice city";
+////            return view('frontend.users.index');
+//
+//            $response = Geocode::make()->latLng($this->geoIpController->latitude, $this->geoIpController->longitude);
+//            if ($response){
+//                echo $response->locationType();
+//                echo $response->formattedAddress();
+//            }
+            $location = file_get_contents('http://freegeoip.net/json/'.$_SERVER['REMOTE_ADDR']);
+            print_r($location);
         }
 
     }

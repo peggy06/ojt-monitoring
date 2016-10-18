@@ -22,7 +22,7 @@ class Authenticate
                 return response('Unauthorized.', 401);
             }
 
-            return redirect()->guest(route('admin'));
+            return redirect()->guest(route('index'));
         }
 
         return $next($request);

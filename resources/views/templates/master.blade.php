@@ -10,6 +10,8 @@
 	<meta name="author" content="">
 
 	<title>{{ isset($page_title) ? $page_title : "BulSU-OJT Monitoring" }}</title>
+	<!-- My Custom CSS -->
+	<link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
 	<!-- Plugins Bootstrap Core CSS -->
 	<link href="{{ asset('plugins/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -29,6 +31,9 @@
 	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	<![endif]-->
+	<!-- Plugins jQuery -->
+
+	<script src="{{ asset('plugins/jquery/dist/jquery.min.js') }}"></script>
 
 </head>
 
@@ -36,8 +41,6 @@
 
 @yield('content')
 
-<!-- Plugins jQuery -->
-<script src="{{ asset('plugins/jquery/dist/jquery.min.js') }}"></script>
 
 <!-- Plugins Bootstrap Core JavaScript -->
 <script src="{{ asset('plugins/bootstrap/dist/js/bootstrap.min.js') }}"></script>
@@ -45,8 +48,29 @@
 <!-- Plugins Metis Menu Plugin JavaScript -->
 <script src="{{ asset('plugins/metisMenu/dist/metisMenu.min.js') }}"></script>
 
+<script src="{{ asset('plugins/datatables/media/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js') }}"></script>
+
 <!-- Plugins Custom Theme JavaScript -->
 <script src="{{ asset('plugins/js/sb-admin-2.js') }}"></script>
+<script>
+	$(document).ready(function() {
+		$('#dataTables-example').DataTable({
+			responsive: true
+		});
+	});
+</script>
+<script>
+	$('.tooltip-demo').tooltip({
+		selector: "[data-toggle=tooltip]",
+		container: "body"
+	})
+
+	// popover demo
+	$("[data-toggle=popover]")
+			.popover()
+</script>
+
 
 </body>
 

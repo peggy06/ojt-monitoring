@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Singapore',
 
     /*
     |--------------------------------------------------------------------------
@@ -213,7 +213,6 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Form' => Collective\Html\FormFacade::class,
         'Geocode' => Jcf\Geocode\Facades\Geocode::class,
-
     ],
 
 ];

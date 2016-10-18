@@ -5,9 +5,9 @@
         @include('frontend.users.templates.nav')
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
-                <div class="login-panel panel panel-info">
+                <div class="login-panel panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title" style="color: #31708f">Login
+                        <h3 class="panel-title" style="color: #FFFFFF">Login
                             <span class="pull-right">
                                 <a href="{{ route('showRegistration') }}"><i class="fa fa-user fa-fw"></i></a>
                             </span>
@@ -19,7 +19,7 @@
                             {{--hanldes auth->failed msg--}}
                             @if(session()->has('failed'))
                                 <div class="text-danger text-center">
-                                    {{ session()->get('failed') }}
+                                    {!!   session()->get('failed') !!}
                                 </div>
                             @endif
                             {{--/handles auth->failed msg--}}

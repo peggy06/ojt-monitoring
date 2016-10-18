@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('deleted');
             $table->integer('confirmed');
+            $table->integer('isOnline');
             $table->rememberToken();
             $table->timestamps();
         });

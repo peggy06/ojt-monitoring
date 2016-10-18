@@ -3,9 +3,9 @@
         <?php echo $__env->make('frontend.users.templates.nav', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
-                <div class="login-panel panel panel-info">
+                <div class="login-panel panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title" style="color: #31708f">Login
+                        <h3 class="panel-title" style="color: #FFFFFF">Login
                             <span class="pull-right">
                                 <a href="<?php echo e(route('showRegistration')); ?>"><i class="fa fa-user fa-fw"></i></a>
                             </span>
@@ -18,7 +18,7 @@
                             <?php /*hanldes auth->failed msg*/ ?>
                             <?php if(session()->has('failed')): ?>
                                 <div class="text-danger text-center">
-                                    <?php echo e(session()->get('failed')); ?>
+                                    <?php echo session()->get('failed'); ?>
 
                                 </div>
                             <?php endif; ?>

@@ -7,12 +7,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     /**
- * The attributes that are mass assignable.
- *
- * @var array
- */
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
-        'firstname', 'lastname', 'name', 'email', 'password', 'role'
+        'firstname', 'lastname', 'name', 'email', 'password', 'role', 'under_to', 'confirmed'
     ];
 
     /**
@@ -34,5 +34,9 @@ class User extends Authenticatable
 
     public function profile(){
         return $this->hasOne('App\Profile');
+    }
+
+    public function logs(){
+        return $this->hasMany('App\Log');
     }
 }

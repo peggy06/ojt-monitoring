@@ -318,6 +318,8 @@ class ComposerStaticInit094aeafe84e71fecfd905a842b28c3d4
 
     public static $classMap = array (
         'CreateCompaniesTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_05_132458_create_companies_table.php',
+        'CreateDepartmentsTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_15_172408_create_departments_table.php',
+        'CreateLogsTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_10_081848_create_logs_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateProfilesTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_04_235239_create_profiles_table.php',
         'CreateRolesTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_04_154322_create_roles_table.php',
@@ -793,6 +795,7 @@ class ComposerStaticInit094aeafe84e71fecfd905a842b28c3d4
         'PHP_Token_XOR_EQUAL' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD_FROM' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'ProfileTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ProfileTableSeeder.php',
         'SebastianBergmann\\Comparator\\ArrayComparator' => __DIR__ . '/..' . '/sebastian/comparator/src/ArrayComparator.php',
         'SebastianBergmann\\Comparator\\Comparator' => __DIR__ . '/..' . '/sebastian/comparator/src/Comparator.php',
         'SebastianBergmann\\Comparator\\ComparisonFailure' => __DIR__ . '/..' . '/sebastian/comparator/src/ComparisonFailure.php',

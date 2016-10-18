@@ -17,6 +17,7 @@ class CreateVerifcationsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->text('code');
             $table->integer('used');
+            $table->integer('deleted');
             $table->timestamps();
 
             $table->foreign('user_id')

@@ -16,6 +16,7 @@ class CreateCompaniesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->text('address');
+            $table->integer('deleted');
             $table->timestamps();
         });
     }

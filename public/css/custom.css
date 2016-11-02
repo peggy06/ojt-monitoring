@@ -1,3 +1,41 @@
 .text-online{
     color: #4ecd23;
 }
+
+.nav-users{
+    background-color: #289afd !important;
+    overflow: visible;
+}
+
+.loadingIMG{
+    position: absolute;
+    z-index: 100;
+    opacity: 0.8;
+    overflow: visible;
+    width: 100%;
+}
+
+.navbar-brand{
+    margin-top: 0px !important;
+    padding-top: 0px !important;
+    padding-bottom: 15px !important;
+    margin-bottom: 10px !important;
+}
+
+.badge{
+    background-color: #289afd !important;
+}
+
+.kbd{
+    background-color: #289afd !important;
+}
+
+.kbd-default{
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+
+.dropdown-scroll{
+    height: 450px;
+}

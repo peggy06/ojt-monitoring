@@ -19,11 +19,12 @@ class CreateUsersTable extends Migration
             $table->string('name')->unique();
             $table->string('email')->unique();
             $table->integer('under_to')->nullable();
-            $table->integer('role');
             $table->string('password');
             $table->integer('deleted');
+            $table->integer('accepted');
             $table->integer('confirmed');
             $table->integer('isOnline');
+            $table->integer('role');
             $table->rememberToken();
             $table->timestamps();
         });

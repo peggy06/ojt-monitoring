@@ -12,7 +12,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'firstname', 'lastname', 'name', 'email', 'password', 'role', 'under_to', 'confirmed'
+        'firstname', 'lastname', 'name', 'email', 'password', 'under_to', 'confirmed', 'role'
     ];
 
     /**
@@ -25,7 +25,7 @@ class User extends Authenticatable
     ];
 
     public function signatures(){
-        return $this->hasMany('App\Signature');
+        return $this->hasOne('App\Signature');
     }
 
     public function verification(){

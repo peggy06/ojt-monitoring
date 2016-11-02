@@ -6,28 +6,44 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="{{ route('dashboard') }}">OJT Monitoring</a>
+
+        <div class="navbar-brand">
+            <a href="{{ route('adminDashboard') }}">
+                <img src="{{ asset('images/new_logo_invert.png') }}" class="img-responsive" width="100" alt="">
+            </a>
+        </div>
     </div>
     <!-- /.navbar-header -->
-
     <ul class="nav navbar-top-links navbar-right">
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="requestTrigger">
+                <i class="fa fa-bullhorn fa-fw"></i>
+                @if($permissions->where(['to' => auth('admin')->user()->id, 'accepted' => 0])->count() != 0)
+                    <span class="badge small" id="requestBadge">{{$permissions->where(['to' => auth('admin')->user()->id, 'accepted' => 0])->count()}}</span>
+                @endif
+                <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-messages dropdown-scroll">
+                <iframe src="{{route('loadRequest')}}" frameborder="0" height="100%" width="100%" style="overflow-x: hidden"></iframe>
+            </ul>
+        </li>
         <!-- /.dropdown -->
         <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                 <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
             </a>
-            <ul class="dropdown-menu dropdown-messages">
+            <ul class="dropdown-menu dropdown-user">
                 <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
                 </li>
                 <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                 </li>
                 <li class="divider"></li>
-                <li><a href="{{ route('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                <li><a href="{{ route('adminLogout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                 </li>
             </ul>
-            <!-- /.dropdown-user -->
         </li>
         <!-- /.dropdown -->
+
     </ul>
     <!-- /.navbar-top-links -->
 
@@ -36,16 +52,12 @@
             <ul class="nav" id="side-menu">
 
                 <li>
-                    <a href="{{ route('profile') }}">
+                    <a href="{{ route('adminProfile') }}">
                         <div class="row">
                             <div class="col-md-3 col-sm-2 col-xs-2">
-                                @if($users->find(auth('admin')->user()->id)->profile->picture)
-                                    <img src="{{ asset($users->find(auth('admin')->user()->id)->profile->picture) }}" alt="{{ auth('admin')->user()->name }}" class="img-circle" width="40" height="40" >
-                                @else
-                                    <img src="{{ asset('images/default.jpg') }}" alt="{{ auth('admin')->user()->name }}" class="img-circle" width="40" height="40" >
-                                @endif
+                                <img src="{{ asset($users->find(auth('admin')->user()->id)->profile->avatar) }}" width="50px" class="img-circle pull-left" alt="">
                             </div>
-                            <div class="col-md-9 col-sm-10 col-xs-10">
+                            <div class="col-md-9 col-sm-10 col-xs-10" style="margin-top: 5px;">
                                 <span class="pull-left">{{ auth('admin')->user()->name }} <br> <span class="small">View Profile</span></span><br>
                             </div>
                         </div>
@@ -53,33 +65,43 @@
                 </li>
                 <li class="divider">&nbsp;</li>
                 <li>
-                    <a href="{{ route('dashboard') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                    <a href="{{ route('adminDashboard') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                </li>
+                <li>
+                    <a href="{{ route('adminInbox') }}"><i class="fa fa-inbox fa-fw"></i> Inbox</a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-users fa-fw"></i> Users<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="{{ route('collectionAdviser') }}">Advisers</a>
+                            <a href="{{ route('adminCollectionAdviser') }}">Advisers</a>
                         </li>
                         <li>
-                            <a href="{{ route('collectionStudent') }}">Students</a>
+                            <a href="{{ route('adminCollectionStudent') }}">Students</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
                 <li>
-                    <a href="{{ route('signature') }}"><i class="fa fa-edit fa-fw"></i> My Signature</a>
+                    <a href="{{ route('adminLogs') }}"><i class="fa fa-list-alt fa-fw"></i> Activity Log</a>
                 </li>
                 <li>
-                    <a href="{{ route('activityLogs') }}"><i class="fa fa-list-alt fa-fw"></i> Activity Log</a>
+                    <a href="{{ route('adminCourseAndSection') }}"><i class="fa fa-university fa-fw"></i> Course and Section</a>
                 </li>
                 <li>
-                    <a href="{{ route('departments') }}"><i class="fa fa-university      fa-fw"></i> Departments</a>
+                    <a href="{{ route('adminCompany') }}"><i class="fa fa-building fa-fw"></i> Partner Companies</a>
                 </li>
             </ul>
         </div>
-        </div>
-        <!-- /.sidebar-collapse -->
+    </div>
+    <!-- /.sidebar-collapse -->
     </div>
     <!-- /.navbar-static-side -->
 </nav>
+<script>
+    $(document).ready(function(){
+        $("#requestTrigger").click(function(){
+            $("#requestBadge").hide();
+        });
+    });
+</script>

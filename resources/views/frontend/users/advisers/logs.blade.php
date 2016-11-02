@@ -19,20 +19,20 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4>
-                            @if(session()->has('deletedLogs'))
-                                <i class="fa fa-trash fa-fw"></i> Deleted Logs |
-                                <span class="small"><a href="{{ route('adviserActiveLogs') }}">Activity Log</a></span>
-                                <div class="pull-right">
-                                    <a href="{{ route('adviserRestoreLogs') }}"><span class="glyphicon glyphicon-trash"></span> Restore All</a>
-                                </div>
-                            @else
-                                <i class="fa fa-list-alt fa-fw"></i> Activity Log |
-                                <span class="small"><a href="{{ route('adviserDeletedLogs') }}">Deleted Log</a></span>
-                                {{--TODO: decide if this function will be added or it was too risky ?--}}
-                                {{--<div class="pull-right">--}}
-                                {{--<a href="{{ route('resetLogs') }}" class="text-danger"><span class="fa fa-minus-circle fa-fw"></span> Delete All</a>--}}
-                                {{--</div>--}}
-                            @endif
+                                @if(session()->has('deletedLogs'))
+                                    <i class="fa fa-trash fa-fw"></i> Deleted Logs |
+                                    <span class="small"><a href="{{ route('adviserActiveLogs') }}">Activity Log</a></span>
+                                    <div class="pull-right">
+                                        <a href="{{ route('adviserRestoreLogs') }}"><span class="glyphicon glyphicon-trash"></span> Restore All</a>
+                                    </div>
+                                @else
+                                    <i class="fa fa-list-alt fa-fw"></i> Activity Log |
+                                    <span class="small"><a href="{{ route('adviserDeletedLogs') }}">Deleted Log</a></span>
+                                    {{--TODO: decide if this function will be added or it was too risky ?--}}
+                                    {{--<div class="pull-right">--}}
+                                    {{--<a href="{{ route('resetLogs') }}" class="text-danger"><span class="fa fa-minus-circle fa-fw"></span> Delete All</a>--}}
+                                    {{--</div>--}}
+                                @endif
                             </h4>
                         </div>
                         <!-- /.panel-heading -->
@@ -40,10 +40,10 @@
                             <div class="dataTable_wrapper">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
-                                        <th>User</th>
-                                        <th>Activity</th>
-                                        <th>Date</th>
-                                        <th>Action</th>
+                                    <th>User</th>
+                                    <th>Activity</th>
+                                    <th>Date</th>
+                                    <th>Action</th>
                                     </thead>
                                     <tbody>
                                     @if(session()->has('deletedLogs'))

@@ -19,20 +19,21 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4>
-                            @if(session()->has('deletedLogs'))
-                                <i class="fa fa-trash fa-fw"></i> Deleted Logs |
-                                <span class="small"><a href="{{ route('activeLogs') }}">Activity Log</a></span>
-                                <div class="pull-right">
-                                    <a href="{{ route('restoreLogs') }}"><span class="glyphicon glyphicon-trash"></span> Restore All</a>
-                                </div>
-                            @else
-                                <i class="fa fa-list-alt fa-fw"></i> Activity Log |
-                                <span class="small"><a href="{{ route('deletedLogs') }}">Deleted Log</a></span>
+                            <span class="fa fa-list-alt fa-fw"></span> Activity Logs | <span class="small">Showing all user's activities, including you.</span>
+                            {{--@if(session()->has('deletedLogs'))--}}
+                                {{--<i class="fa fa-trash fa-fw"></i> Deleted Logs |--}}
+                                {{--<span class="small"><a href="{{ route('activeLogs') }}">Activity Log</a></span>--}}
+                                {{--<div class="pull-right">--}}
+                                    {{--<a href="{{ route('restoreLogs') }}"><span class="glyphicon glyphicon-trash"></span> Restore All</a>--}}
+                                {{--</div>--}}
+                            {{--@else--}}
+                                {{--<i class="fa fa-list-alt fa-fw"></i> Activity Log |--}}
+                                {{--<span class="small"><a href="{{ route('deletedLogs') }}">Deleted Log</a></span>--}}
                                 {{--TODO: decide if this function will be added or it was too risky ?--}}
                                 {{--<div class="pull-right">--}}
                                 {{--<a href="{{ route('resetLogs') }}" class="text-danger"><span class="fa fa-minus-circle fa-fw"></span> Delete All</a>--}}
                                 {{--</div>--}}
-                            @endif
+                            {{--@endif--}}
                             </h4>
                         </div>
                         <!-- /.panel-heading -->
@@ -58,9 +59,19 @@
                                     @else
                                         @foreach( $logs->where('deleted', '0')->get() as $log)
                                             <tr class="odd gradeX">
-                                                <td>{{ $users->where('id', $log->user_id)->first()->name == auth('admin')->user()->name ? "You" : $users->where('id', $log->user_id)->first()->name }}</td>
+{{--                                                <td>{{ $users->where('id', $log->user_id)->first()->name == auth('admin')->user()->name ? "You" : $users->where('id', $log->user_id)->first()->name }}</td>--}}
+                                                <td>{{ $users->where('id', $log->user_id)->first()->name }}</td>
                                                 <td>{{ $log->activity }}</td>
-                                                <td>{{ $log->created_at->format('M. d, Y') }}</td>
+                                                <td>
+                                                    @if($log->created_at->format('M. d, Y') == \Carbon\Carbon::yesterday()->format('M. d, Y'))
+                                                        {{ 'Yesterday, ' }}
+                                                    @elseif($log->created_at->format('M. d, Y') == \Carbon\Carbon::today()->format('M. d, Y'))
+                                                        {{ 'Today, ' }}
+                                                    @else
+                                                        {{ $log->created_at->diffForHumans().', ' }}
+                                                    @endif
+                                                    {{ $log->created_at->format('M. d, Y') }}
+                                                </td>
                                                 <td class="center"><a href="" data-toggle="modal" data-target="#activityModal{{ $log->id }}">View Details</a></td>
                                             </tr>
 
@@ -75,7 +86,7 @@
                                                             <ul class="list-unstyled">
                                                                 <li>{{$users->where('id', $log->user_id)->first()->name}}</li>
                                                                 <li>{{ $log->activity }}</li>
-                                                                <li>at {{$log->created_at->format('M. d, Y h:i:s A')}}</li>
+                                                                <li>at {{$log->created_at->format('M. d, Y h:i:s A')}}, {{ $log->created_at->diffForHumans() }}</li>
                                                             </ul>
                                                         </div>
                                                         <div class='modal-footer'>

@@ -151,6 +151,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Jcf\Geocode\GeocodeServiceProvider::class,
+        Vsmoraes\Pdf\PdfServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -213,6 +214,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Form' => Collective\Html\FormFacade::class,
         'Geocode' => Jcf\Geocode\Facades\Geocode::class,
+        'PDF' => Vsmoraes\Pdf\PdfFacade::class,
     ],
 
 ];

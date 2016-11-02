@@ -24,9 +24,6 @@
                             <h4><i class="fa fa-user fa-fw"></i> Adviser List</h4>
 
                         </div>
-
-
-                    </div>
                     <!-- /.panel-heading -->
                     <div class="panel-body">
                         <div class="dataTable_wrapper">
@@ -51,6 +48,8 @@
 
                             </table>
 
+
+                        </div>
 
                         </div>
                     </div>

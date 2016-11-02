@@ -6,28 +6,62 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="{{ route('adviserDashboard') }}">OJT Monitoring</a>
+
+        <div class="navbar-brand">
+            <a href="{{ '' }}">
+                <img src="{{ asset('images/new_logo_invert.png') }}" class="img-responsive" width="100" alt="">
+            </a>
+        </div>
     </div>
     <!-- /.navbar-header -->
-
-    <ul class="nav navbar-top-links navbar-right">
+    <ul class="nav navbar-top-links navbar-right text-center">
+        <li>
+            <a href="">
+                <i class="fa fa-envelope fa-fw"></i>
+                @if($messages->where(['receiver' => auth()->user()->id, 'deleted' => 0, 'new' => 1])->count() != 0)
+                    <span class="badge small" id="requestBadge">{{$messages->where(['receiver' => auth()->user()->id, 'deleted' => 0, 'new' => 1])->count()}}</span>
+                @endif
+            </a>
+        </li>
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="requestTrigger">
+                <i class="fa fa-globe fa-fw"></i>
+                @if($notifications->where(['to' => auth()->user()->id, 'removed' => 0])->count() != 0)
+                    <span class="badge small" id="requestBadge">{{$notifications->where(['to' => auth()->user()->id, 'removed' => 0])->count()}}</span>
+                @endif
+                <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-tasks dropdown-scroll">
+                <iframe src="{{ route('adviserLoadNotification') }}" frameborder="0" height="100%" width="100%" style="overflow-x: hidden"></iframe>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="requestTrigger">
+                <i class="fa fa-bullhorn fa-fw"></i>
+                @if($permissions->where(['to' => auth()->user()->id, 'accepted' => 0])->count() != 0)
+                    <span class="badge small" id="requestBadge">{{$permissions->where('new', 1)->count()}}</span>
+                @endif
+                <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-alerts dropdown-scroll">
+                <iframe src="{{ route('adviserLoadRequest') }}" frameborder="0" height="100%" width="100%" style="overflow-x: hidden"></iframe>
+            </ul>
+        </li>
         <!-- /.dropdown -->
         <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                 <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
             </a>
-            <ul class="dropdown-menu dropdown-messages">
+            <ul class="dropdown-menu dropdown-user">
                 <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                </li>
-                <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                 </li>
                 <li class="divider"></li>
                 <li><a href="{{ route('adviserLogout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                 </li>
             </ul>
-            <!-- /.dropdown-user -->
         </li>
         <!-- /.dropdown -->
+
     </ul>
     <!-- /.navbar-top-links -->
 
@@ -39,13 +73,9 @@
                     <a href="{{ route('adviserProfile') }}">
                         <div class="row">
                             <div class="col-md-3 col-sm-2 col-xs-2">
-                                @if($users->find(auth()->user()->id)->profile->picture != null )
-                                    <img src="{{ asset($users->find(auth()->user()->id)->profile->picture) }}" alt="{{ auth()->user()->name }}" class="img-circle" width="40" height="40" >
-                                @else
-                                    <img src="{{ asset('images/default.jpg') }}" alt="{{ auth()->user()->name }}" class="img-circle" width="40" height="40" >
-                                @endif
+                                <img src="{{ asset($users->find(auth()->user()->id)->profile->avatar) }}" width="50px" class="img-circle pull-left" alt="">
                             </div>
-                            <div class="col-md-9 col-sm-10 col-xs-10">
+                            <div class="col-md-9 col-sm-10 col-xs-10" style="margin-top: 5px;">
                                 <span class="pull-left">{{ auth()->user()->name }} <br> <span class="small">View Profile</span></span><br>
                             </div>
                         </div>
@@ -56,10 +86,10 @@
                     <a href="{{ route('adviserDashboard') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                 </li>
                 <li>
-                    <a href="{{ route('myStudents') }}"><i class="fa fa-users fa-fw"></i> My Students</a>
+                    <a href="{{ route('adviserInbox') }}"><i class="fa fa-inbox fa-fw"></i> Inbox</a>
                 </li>
                 <li>
-                    <a href="{{ route('adviserSignature') }}"><i class="fa fa-edit fa-fw"></i> My Signature</a>
+                    <a href="{{ route('myStudents') }}"><i class="fa fa-users fa-fw"></i> My Students</a>
                 </li>
                 <li>
                     <a href="{{ route('adviserActivityLogs') }}"><i class="fa fa-list-alt fa-fw"></i> Activity Log</a>
@@ -71,3 +101,10 @@
     </div>
     <!-- /.navbar-static-side -->
 </nav>
+<script>
+    $(document).ready(function(){
+        $("#requestTrigger").click(function(){
+            $("#requestBadge").hide();
+        });
+    });
+</script>

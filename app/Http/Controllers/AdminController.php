@@ -141,7 +141,7 @@ class AdminController extends Controller
                     try{
                         $new_admin = $this->user->create($admin);
                     }catch (Exception $e){
-                        session()->flash('setup-failed', "Can't create new account because".$e->getMessage());
+                        session()->flash('setup-failed', "Can't create new account because".$e->getMessage);
                         return redirect()->back();
                     }
 

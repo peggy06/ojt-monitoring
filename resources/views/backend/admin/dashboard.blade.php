@@ -121,7 +121,8 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($logs->where('deleted', '0')->get() as $log)
+                                        @if($logs->where('deleted', '0')->count() != 0)
+                                            @foreach($logs->where('deleted', '0')->get() as $log)
                                             @if($users->where('id', $log->user_id)->first()->name != auth('admin')->user()->name && $log->created_at->format('m-d-Y') == \Carbon\Carbon::today()->format('m-d-Y'))
                                                 <tr class="odd gradeX">
                                                     <td>{{ $users->where('id', $log->user_id)->first()->name }}</td>
@@ -130,6 +131,7 @@
                                                 </tr>
                                             @endif
                                         @endforeach
+                                        @endif()
                                         </tbody>
                                     </table>
                                 </div>
@@ -147,7 +149,8 @@
                             <!-- /.panel-heading -->
                             <div class="panel-body">
                                 <ul class="chat">
-                                    @foreach($users->where(['deleted' => '0', 'confirmed' => '1'])->first() as $user)
+                                    @if($users->where(['deleted' => '0', 'confirmed' => '1'])->count() != 0)
+                                        @foreach($users->where(['deleted' => '0', 'confirmed' => '1'])->first() as $user)
                                         @if($user->name != auth('admin')->user()->name)
                                             <li>
                                                 {{ $user->name }}
@@ -157,6 +160,7 @@
                                             </li>
                                         @endif
                                     @endforeach
+                                    @endif()
                                 </ul>
                             </div>
                             <!-- /.panel-body -->

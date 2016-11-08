@@ -54,11 +54,11 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => 'ec2-23-23-192-249.compute-1.amazonaws.com',
-            'port' => '5432',
-            'database' => "d9mbeh2og1cjca",
-            'username' => "ksahwzejjcsipt",
-            'password' => "v47XabnSNCGsQKa9SK5W2GX3aL",
+            'host' => 'sql7.freesqldatabase.com',
+            'port' => '3306',
+            'database' => "sql7143581",
+            'username' => "sql7143581",
+            'password' => "XnsEdeKFw6",
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',

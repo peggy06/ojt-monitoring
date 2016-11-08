@@ -21,13 +21,13 @@
                             <h4>
                                 @if(session()->has('deletedLogs'))
                                     <i class="fa fa-trash fa-fw"></i> Deleted Logs |
-                                    <span class="small"><a href="{{ route('adviserActiveLogs') }}">Activity Log</a></span>
+                                    <span class="small"><a href="">Activity Log</a></span>
                                     <div class="pull-right">
-                                        <a href="{{ route('adviserRestoreLogs') }}"><span class="glyphicon glyphicon-trash"></span> Restore All</a>
+                                        <a href=""><span class="glyphicon glyphicon-trash"></span> Restore All</a>
                                     </div>
                                 @else
                                     <i class="fa fa-list-alt fa-fw"></i> Activity Log |
-                                    <span class="small"><a href="{{ route('adviserDeletedLogs') }}">Deleted Log</a></span>
+                                    <span class="small"><a href="">Deleted Log</a></span>
                                     {{--TODO: decide if this function will be added or it was too risky ?--}}
                                     {{--<div class="pull-right">--}}
                                     {{--<a href="{{ route('resetLogs') }}" class="text-danger"><span class="fa fa-minus-circle fa-fw"></span> Delete All</a>--}}

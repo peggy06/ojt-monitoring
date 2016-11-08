@@ -83,6 +83,9 @@ class AdminController extends Controller
     }
 
     public function install(InstallationRequest $request){
+
+        ini_set('max_execution_time', 300);
+
         //contact number validation
         $validate_contact = $request->input('contact');
         preg_match_all('/[0-9]/', $validate_contact, $numbers);
@@ -123,11 +126,11 @@ class AdminController extends Controller
 
                 //send email confirmation to the user
                 try{
-//                    $sent = Mail::send('mails.confirmationMail', $email_data, function($msg)use($email_data){
-//                        $msg->to($email_data['email'], $email_data['firstname'].' '.$email_data['lastname'])->subject('Welcome to OJT Monitoring System');
-//                        $msg->from('ojttracker@gmail.com', 'OJT Monitoring System Bot');
-//                    });
-                    $sent = true; //temporary email sent
+                    $sent = Mail::send('mails.adminConfirmationMail', $email_data, function($msg)use($email_data){
+                        $msg->to($email_data['email'], $email_data['firstname'].' '.$email_data['lastname'])->subject('Welcome to OJT Monitoring System');
+                        $msg->from('ojttracker@gmail.com', 'OJT Monitoring System Bot');
+                    });
+//                    $sent = true; //temporary email sent
                 }catch (Exception $e){
                     session()->flash('setup-failed', "Can't send account confirmation to your email address. Please check your network connection and try again.");
                     return redirect()->back();
@@ -193,7 +196,7 @@ class AdminController extends Controller
 
                         $enc = encrypt($verification_code);
                         session()->forget('account_setup');
-                        return redirect()->route('adminDone', $enc);
+                        return redirect()->route('adminDone');
                     }
                 }
             }else{
@@ -203,8 +206,8 @@ class AdminController extends Controller
         }
     }
 
-    public function done($enc){
-        return view('backend.done', compact('enc'));
+    public function done(){
+        return view('backend.done');
     }
 
     public function confirmation($code){

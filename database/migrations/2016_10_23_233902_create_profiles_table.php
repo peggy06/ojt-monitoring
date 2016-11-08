@@ -19,12 +19,14 @@ class CreateProfilesTable extends Migration
             $table->date('bday');
             $table->integer('gender');
             $table->text('course');
-            $table->text('major');
+            $table->text('section');
             $table->text('contact');
             $table->integer('company_id');
             $table->integer('number_of_hours_rendered');
             $table->text('technology_area');
             $table->string('company_supervisor');
+            $table->string('company_contact');
+            $table->integer('deleted');
             $table->timestamps();
         });
     }

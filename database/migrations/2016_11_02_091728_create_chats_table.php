@@ -16,6 +16,7 @@ class CreateChatsTable extends Migration
             $table->increments('id');
             $table->string('chat_id');
             $table->string('member');
+            $table->integer('deleted');
             $table->timestamps();
         });
     }

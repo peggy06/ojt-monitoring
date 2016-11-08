@@ -19,7 +19,7 @@
             <a href="">
                 <i class="fa fa-envelope fa-fw"></i>
                 @if($messages->where(['receiver' => auth()->user()->id, 'deleted' => 0, 'new' => 1])->count() != 0)
-                    <span class="badge small" id="requestBadge">{{$messages->where(['receiver' => auth()->user()->id, 'deleted' => 0, 'new' => 1])->count()}}</span>
+                    <sup class="badge small" id="requestBadge">{{$messages->where(['receiver' => auth()->user()->id, 'deleted' => 0, 'new' => 1])->count()}}</sup>
                 @endif
             </a>
         </li>

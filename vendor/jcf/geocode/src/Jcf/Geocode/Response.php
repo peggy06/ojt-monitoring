@@ -32,4 +32,16 @@ class Response
 	{
 		return $this->response['geometry']['location_type'];
 	}
+
+	public function neighborhood(){
+		return $this->response['address_components'][0]['long_name'];
+	}
+
+	public function locality(){
+		return $this->response['address_components'][1]['long_name'];
+	}
+
+	public function administrative_area_level_2(){
+		return $this->response['address_components'][2]['long_name'];
+	}
 }

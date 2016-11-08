@@ -18,6 +18,7 @@ class CreateCoursesTable extends Migration
             $table->string('shortname');
             $table->string('code');
             $table->integer('available');
+            $table->integer('deleted');
             $table->timestamps();
         });
     }

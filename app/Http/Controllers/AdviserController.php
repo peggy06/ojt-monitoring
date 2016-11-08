@@ -85,8 +85,8 @@ class AdviserController extends Controller
         $users = $this->users;
         $permissions = $this->permission;
         $notifications = $this->notification;
-
-        return view('frontend.users.advisers.myStudents', compact('page_title', 'users', 'sorted_permission', 'permissions', 'notifications'));
+        $messages = $this->messages;
+        return view('frontend.users.advisers.myStudents', compact('page_title', 'users', 'sorted_permission', 'permissions', 'notifications', 'messages'));
     }
 
     public function showLogs(){
@@ -96,8 +96,8 @@ class AdviserController extends Controller
             $logs = $this->log;
             $permissions = $this->permission;
             $notifications = $this->notification;
-
-            return view('frontend.users.advisers.logs', compact('logs', 'users', 'deletedLogs',  'sorted_permission', 'permissions', 'notifications'));
+            $messages = $this->messages;
+            return view('frontend.users.advisers.logs', compact('logs', 'users', 'deletedLogs',  'sorted_permission', 'permissions', 'notifications', 'messages'));
         }else {
             return redirect()->route('index');
         }

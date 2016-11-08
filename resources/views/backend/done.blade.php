@@ -15,7 +15,6 @@
                         <p>
                             Your registration was successful. Please check your email to confirm your account.
                         </p>
-                        {{ $enc }}
                     </div>
                 </div>
             </div>

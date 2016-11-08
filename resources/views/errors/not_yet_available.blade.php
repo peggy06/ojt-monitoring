@@ -9,7 +9,7 @@
             <div class="col-md-6 col-md-offset-3">
                 <div class="well well-lg">
                     <h4>
-                        <p>Page not yet available!
+                        <p>Admin not yet available!
                         Sorry for the inconvenience.</p><br>
                         <span class="pull-right">-OJT Monitoring Bot</span>
                     </h4>

@@ -34,6 +34,8 @@ class PagesController extends Controller
 
     public function index(){
         try{
+
+
             $hasAdmin = $this->user->where(['id' => 1])->count();
 
             if($hasAdmin){
@@ -41,7 +43,7 @@ class PagesController extends Controller
                     if(auth()->user()->role == 4 and auth()->user()->password != null and auth()->user()->confirmed == 1){
                         return redirect()->route('adviserDashboard');
                     }else{
-
+                        return redirect()->route('studentDashboard');
                     }
                 }else{
                     return view('frontend.index');
@@ -51,7 +53,7 @@ class PagesController extends Controller
             }
         }catch (Exception $e){
             session()->flash('failed', $e->getMessage());
-            echo $e;
+            return view('backend.oops');
         }
     }
 
@@ -130,7 +132,8 @@ class PagesController extends Controller
                                         'user_id'   => $new_user->id,
                                         'gender'    => $request->input('gender'),
                                         'contact'   => $request->input('contact'),
-                                        'avatar'    => $avatar
+                                        'avatar'    => $avatar,
+                                        'bday'      => $request->input('bday')
                                     ]);
 
                                     //create digital signature
@@ -195,7 +198,7 @@ class PagesController extends Controller
     }
 
     public function done($code){
-        if(session()->has('userLogin')){
+        if(!auth()->guest()){
             if(auth()->user()->role == 4){
                 return redirect()->route('adviserDashboard');
             }
@@ -205,7 +208,7 @@ class PagesController extends Controller
     }
 
     public function confirmation($code){
-        if(session()->has('userLogin')){
+        if(!auth()->guest()){
             if(auth()->user()->role == 4){
                 return redirect()->route('adviserDashboard');
             }
@@ -288,7 +291,7 @@ class PagesController extends Controller
     }
 
     public function confirmed(){
-        if(session()->has('userLogin')){
+        if(!auth()->guest()){
             if(auth()->user()->role == 4){
                 return redirect()->route('adviserDashboard');
             }
@@ -331,7 +334,8 @@ class PagesController extends Controller
                         return view('frontend.users.students.index');
                     }
                 }else {
-                    session()->flash('failed', 'Hi Admin! Please use appropriate login form for you, thank you.');
+                    auth()->logout();
+                    session()->flash('failed', 'You are not allowed here!');
                     return redirect()->back();
                 }
             }else {

@@ -13,8 +13,6 @@
                         <p>
                             Your registration was successful. Please check your email to confirm your account.
                         </p>
-                        <?php echo e($enc); ?>
-
                     </div>
                 </div>
             </div>

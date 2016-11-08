@@ -15,6 +15,7 @@ class CreateSectionsTable extends Migration
         Schema::create('sections', function (Blueprint $table) {
             $table->increments('id');
             $table->string('section')->unique();
+            $table->integer('deleted');
             $table->timestamps();
         });
     }

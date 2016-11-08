@@ -39,3 +39,19 @@
 .dropdown-scroll{
     height: 450px;
 }
+
+.legal{
+    background-color: #fff;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.margin-default{
+    padding: 72px 90px 72px 90px;
+    /*top&bottom: 1in, left&right: 1.25in*/
+}
+
+.logo{
+    position: absolute;
+    top: 90px;
+    left: 160px;
+}

@@ -19,13 +19,13 @@
                             <h4>
                                 <?php if(session()->has('deletedLogs')): ?>
                                     <i class="fa fa-trash fa-fw"></i> Deleted Logs |
-                                    <span class="small"><a href="<?php echo e(route('adviserActiveLogs')); ?>">Activity Log</a></span>
+                                    <span class="small"><a href="">Activity Log</a></span>
                                     <div class="pull-right">
-                                        <a href="<?php echo e(route('adviserRestoreLogs')); ?>"><span class="glyphicon glyphicon-trash"></span> Restore All</a>
+                                        <a href=""><span class="glyphicon glyphicon-trash"></span> Restore All</a>
                                     </div>
                                 <?php else: ?>
                                     <i class="fa fa-list-alt fa-fw"></i> Activity Log |
-                                    <span class="small"><a href="<?php echo e(route('adviserDeletedLogs')); ?>">Deleted Log</a></span>
+                                    <span class="small"><a href=">Deleted Log</a></span>
                                     <?php /*TODO: decide if this function will be added or it was too risky ?*/ ?>
                                     <?php /*<div class="pull-right">*/ ?>
                                     <?php /*<a href="<?php echo e(route('resetLogs')); ?>" class="text-danger"><span class="fa fa-minus-circle fa-fw"></span> Delete All</a>*/ ?>

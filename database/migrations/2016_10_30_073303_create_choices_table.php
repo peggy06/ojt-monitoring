@@ -14,8 +14,11 @@ class CreateChoicesTable extends Migration
     {
         Schema::create('choices', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id');
             $table->string('name');
             $table->text('address');
+            $table->double('lat');
+            $table->double('lng');
             $table->integer('selected');
             $table->integer('deleted');
             $table->timestamps();

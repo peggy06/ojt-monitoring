@@ -22,7 +22,7 @@
     {!! $errors->first('contact', '<span class="text-danger">:message</span><br>') !!}
     <div class="form-group input-group {{ $errors->has('contact') ? 'has-error' : "" }}">
         <span class="input-group-addon">+63</span>
-        {{ Form::input('text', 'contact', null, ['class' => 'form-control', 'placeholder' => 'Contact Number']) }}
+        {{ Form::number('contact', null, ['class' => 'form-control', 'placeholder' => 'Contact Number']) }}
     </div>
     <div class="form-group {{ $errors->has('gender') ? 'has-error' : "" }}">
         {!! $errors->first('gender', '<span class="text-danger">:message</span>') !!}

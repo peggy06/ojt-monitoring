@@ -17,7 +17,7 @@ Route::patch('user/account/setup/{id}', ['as' => 'setup', 'uses' => 'PagesContro
 
 Route::get('/admin', ['as' => 'adminIndex', 'uses' => 'AdminController@index']);
 Route::get('/admin/account/setup', ['as' => 'adminSetup', 'uses' => 'AdminController@setup']);
-Route::get('/admin/account/setup/done/{code}', ['as' => 'adminDone', 'uses' => 'AdminController@done']);
+Route::get('/admin/account/setup/done', ['as' => 'adminDone', 'uses' => 'AdminController@done']);
 Route::get('/admin/account/confirmation/{code}', ['as' => 'adminConfirmation', 'uses' => 'AdminController@confirmation']);
 Route::get('/admin/account/confirmed', ['as' => 'adminConfirmed', 'uses' => 'AdminController@confirmed']);
 Route::post('/admin/login', ['as' => 'adminLogin', 'uses' => 'AdminController@login']);
@@ -62,4 +62,16 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('adviser/inbox/chat/send/{id}/{chat_id}', ['as' => 'messageSend', 'uses' => 'AdviserController@send']);
     Route::patch('adviser/user/profile/password/update', ['as' => 'adviserUpdatePass', 'uses' => 'AdviserController@updatePassword']);
     Route::patch('adviser/user/profile/email/update', ['as' => 'adviserUpdateEmail', 'uses' => 'AdviserController@updateEmail']);
+
+    Route::get('/student/dashboard', ['as' => 'studentDashboard', 'uses' => 'StudentController@index']);
+    Route::get('/student/profile', ['as' => 'studentProfile', 'uses' => 'StudentController@index']);
+    Route::get('/student/inbox', ['as' => 'studentInbox', 'uses' => 'StudentController@index']);
+    Route::get('/student/recommendation/{id}', ['as' => 'showRecommendation', 'uses' => 'StudentController@recommendation']);
+    Route::get('/student/recommendation/letter/{id}', ['as' => 'showRecommendationLetter', 'uses' => 'StudentController@recommendationLetter']);
+    Route::get('/student/load/notifications', ['as' => 'studentLoadNotification', 'uses' => 'StudentController@index']);
+    Route::get('/student/company/set/{id}', ['as' => 'studentSetCompany', 'uses' => 'StudentController@setCompany']);
+    Route::post('/student/company/add/choice', ['as' => 'studentAddCompany', 'uses' => 'StudentController@addCompany']);
+    Route::post('student/time-in', ['as' => 'timeIn', 'uses' => 'StudentController@timeIn']);
+    Route::get('/student/time-out', ['as' => 'timeOut', 'uses' => 'StudentController@timeOut']);
+    Route::get('/student/logout', ['as' => 'studentLogout', 'uses' => 'StudentController@logout']);
 });

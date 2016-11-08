@@ -31,7 +31,7 @@
 
     <div class="form-group input-group <?php echo e($errors->has('contact') ? 'has-error' : ""); ?>">
         <span class="input-group-addon">+63</span>
-        <?php echo e(Form::input('text', 'contact', null, ['class' => 'form-control', 'placeholder' => 'Contact Number'])); ?>
+        <?php echo e(Form::number('contact', null, ['class' => 'form-control', 'placeholder' => 'Contact Number'])); ?>
 
     </div>
     <div class="form-group <?php echo e($errors->has('gender') ? 'has-error' : ""); ?>">

@@ -132,7 +132,7 @@ class AdminController extends Controller
                     });
 //                    $sent = true; //temporary email sent
                 }catch (Exception $e){
-                    session()->flash('setup-failed', "Can't send account confirmation to your email address. Please check your network connection and try again.".$e->getMessage."");
+                    session()->flash('setup-failed', "Can't send account confirmation to your email address. Please check your network connection and try again.".$e->getMessage()));
                     return redirect()->back();
                 }
 

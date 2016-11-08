@@ -184,13 +184,15 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach($dtr as $time_record)
+                                                       @if($dtr->count != 0)
+                                                       	 @foreach($dtr as $time_record)
                                                             <tr>
                                                                 <td>{{ $time_record->date }}</td>
                                                                 <td>{{ $time_record->created_at->format('h:i:s a') }}</td>
                                                                 <td>{{ $time_record->updated_at->format('h:i:s a') }}</td>
                                                             </tr>
                                                         @endforeach
+                                                       @endif
                                                     </tbody>
                                                 </table>
                                             </div>

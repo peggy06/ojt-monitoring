@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'ojttracker@gmail.com', 'name' => 'OJT Monitoring BOTS'],
+    'from' => ['address' => 'chiaroscuroartworks@gmail.com', 'name' => 'OJT Monitoring BOTS'],
 
     /*
     |--------------------------------------------------------------------------
@@ -81,7 +81,7 @@ return [
     |
     */
 
-    'username' => 'ojttracker@gmail.com',
+    'username' => 'chiaroscuroartworks@gmail.com',
 
     /*
     |--------------------------------------------------------------------------
@@ -94,7 +94,7 @@ return [
     |
     */
 
-    'password' => '123Password',
+    'password' => 'admin123Password',
 
     /*
     |--------------------------------------------------------------------------

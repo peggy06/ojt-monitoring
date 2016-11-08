@@ -224,8 +224,10 @@
                                         <div class="article">
 
                                            <span class="fa fa-exclamation-triangle fa-3x pull-left text-danger"></span>
-                                            @if($today_record->first()->created_at->diffInHours(Carbon\Carbon::now()) < 8)
+                                            @if($today_record->count() !=  0)
+                                            	@if($today_record->first()->created_at->diffInHours(Carbon\Carbon::now()) < 8)
                                                 <span class="text-danger small">This will be register as UNDERTIME</span><br>
+                                            @endif
                                             @endif
                                             Are you sure you want to Time out ?
                                             <br>
